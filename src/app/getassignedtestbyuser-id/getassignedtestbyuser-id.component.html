@@ -1,0 +1,21 @@
+<table class="table table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th>Assignment ID</th>
+        <th>Test ID</th>
+        <!-- <th>User ID</th> -->
+        <th>Scheduled Date Time</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let test of assignedTests">
+        <td>{{ test.assignmentID }}</td>
+        <td>{{ test.testID }}</td>
+        <!-- <td>{{ test.userId }}</td> -->
+        <td>{{ test.scheduledDateTime | date:'medium' }}</td>
+        <td><button class="btn btn-info" (click)="takeTest(test.testID)">TakeTest</button></td>
+      </tr>
+    </tbody>
+  </table>
+  

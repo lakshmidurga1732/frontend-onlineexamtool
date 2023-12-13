@@ -1,0 +1,29 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Questions for Subject {{ subjectId }}</h2>
+
+  <div *ngFor="let question of questionbank; let i = index" class="question-container">
+    <div class="question"><br>
+      <p><strong>{{ question.questionText }}</strong></p>
+    </div>
+    <div class="answer-form">
+      <i><label for="userAnswer{{ question.questionID }}"></label></i>
+      <input type="hidden" [(ngModel)]="userresponse[i].questionID">
+      <textarea
+        id="userAnswer{{ question.questionID }}"
+        [(ngModel)]="userresponse[i].userAnswer"
+        placeholder="Type your answer"
+        class="form-control"
+        rows="4"
+        required
+        name="userAnswer{{ question.questionID }}"
+        #userAnswer="ngModel"
+      ></textarea>
+      <div *ngIf="userAnswer.invalid && (userAnswer.dirty || userAnswer.touched)" class="text-danger">
+        <div *ngIf="userAnswer.errors && userAnswer.errors['required']">Answer is required.</div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center">
+    <br><button class="btn btn-primary" (click)="submittest()">Submit Test</button>
+  </div>
+</div>

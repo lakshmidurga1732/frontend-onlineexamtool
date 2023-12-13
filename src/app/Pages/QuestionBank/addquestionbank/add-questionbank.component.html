@@ -1,0 +1,35 @@
+<div class="container">
+  <h2>Add Questionbank</h2>
+  <form name="questionbankForm" #f="ngForm" (ngSubmit)="f.form.valid && addQuestionbank()">
+    <div class="form-group">
+      <label for="subjectID">Subject ID</label>
+      <input type="number" id="subjectID" class="form-control" name="subjectID" [(ngModel)]="questionbank.subjectID" required
+        #subjectID="ngModel" [ngClass]="{ 'is-invalid': f.submitted && subjectID.errors }" />
+      <div *ngIf="f.submitted && subjectID.errors" class="invalid-feedback">
+        <div *ngIf="subjectID.errors['required']">Subject ID is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="questionText">Question Text</label>
+      <input type="text" id="questionText" class="form-control" name="questionText" [(ngModel)]="questionbank.questionText" required
+        #questionText="ngModel" [ngClass]="{ 'is-invalid': f.submitted && questionText.errors }" />
+      <div *ngIf="f.submitted && questionText.errors" class="invalid-feedback">
+        <div *ngIf="questionText.errors['required']">Question Text is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="answer">Answer</label>
+      <input type="text" id="answer" class="form-control" name="answer" [(ngModel)]="questionbank.answer" required
+        #answer="ngModel" [ngClass]="{ 'is-invalid': f.submitted && answer.errors }" />
+      <div *ngIf="f.submitted && answer.errors" class="invalid-feedback">
+        <div *ngIf="answer.errors['required']">Answer is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Add Questionbank</button>
+    </div>
+  </form>
+</div>
